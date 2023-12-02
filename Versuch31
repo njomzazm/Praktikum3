@@ -1,0 +1,43 @@
+import javax.swing.JOptionPane;
+public class Prakitikum31 {
+    public static void main (String [] args) {
+
+        String [] eingabeArray = zahlUndEinheitEinlesen();
+
+        for (int i = 0; i <= eingabeArray.length-1; i++) {
+            String finalArray = eingabeArray[i];
+            double number = Double.parseDouble(eingabeArray[0]);
+            String unit = eingabeArray[1];
+            if (unit.equals("W")) {
+                System.out.println(number + " W entsprechen " + WattToPs(number) + " W.");
+                break;
+            }else if (unit.equals("PS")) {
+                System.out.println(number + " PS entsprechen " + PsToWatt(number) + "PS.");
+                break;
+            }else {
+                break;
+            }
+                }
+            }
+
+    static String[] zahlUndEinheitEinlesen () {
+        String eingabeZahl = JOptionPane.showInputDialog("Geben Sie eine reelle Zahl ein.");
+        String eingabeEinheit = JOptionPane.showInputDialog("Geben Sie die Einheit an. (W = Watt, PS = Pferdestärke");
+        String [] ZahlUndEinheit = new String [2];
+        ZahlUndEinheit[0] = eingabeZahl;
+        ZahlUndEinheit[1] = eingabeEinheit;
+        return ZahlUndEinheit;
+    }
+
+    static double WattToPs(double number) {
+        double psNumber = number * (1/735.5);
+        return psNumber;
+    }
+
+    static double PsToWatt (double number) {
+        double wattNumber = number * 735.5;
+        return wattNumber;
+    }
+
+
+}
